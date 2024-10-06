@@ -1,0 +1,17 @@
+﻿@model RegistroV2.Models.Post
+@{
+    ViewData["Title"] = "Descrição";
+}
+<h2>Detalhes De @Model.NumCodigo</h2>
+
+<div>
+    <br />
+    <h4>Usuario: @Model.Nome</h4>
+    <br />
+    <p><strong>Descrição:</strong> @Model.Descricao</p>
+    <br />
+    <p><strong>Criado em:</strong> @Model.CreadoEm.ToString("g")</p>
+    <br />
+</div>
+
+<a href="@Url.Action("Index", "Home")" class="btn btn-primary">Voltar à Lista</a>

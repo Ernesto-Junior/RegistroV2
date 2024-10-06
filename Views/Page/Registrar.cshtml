@@ -1,0 +1,35 @@
+﻿@model RegistroV2.Models.Post
+@{
+	ViewData["Title"] = "Registrar";
+}
+
+
+	<div class="page-content">
+		<div class="form-v6-content">
+			<form class="form-detail" asp-action="Registrar" method="post">
+				<h2>Formulario de Registro</h2>
+			<div class="form-row">
+				<input type="text" asp-for="Nome" class="input-text" placeholder="Nome">
+			</div>
+				<div class="form-row">
+				<input type="number" asp-for="NumCodigo" class="input-text" placeholder="Codigo">
+				</div>
+				<div class="form-row">
+					<input type="text" asp-for="Descricao" class="input-text" placeholder="Descrição">
+				</div>
+				<div class="form-row-last">
+					<input type="submit" name="register" class="register" value="Registrar">
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- This templates was made by Colorlib (https://colorlib.com) -->
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+	<div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.SuccessMessage))
+{
+	<div class="alert alert-success">@ViewBag.SuccessMessage</div>
+}

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<RegistroV2.Models.Post>
+
+@{
+    ViewData["Title"] = "Registros";
+}
+
+<div class="text-center">
+    <h1>Registros</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Usuario</th>
+                <th>Número do Código</th>
+                <th>Descrição</th>
+                <th>Data de Criação</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any()) // Verifica se há posts
+            {
+                foreach (var post in Model)
+                {
+                    <tr>
+                        <td>@post.Nome</td>
+                        <td>@post.NumCodigo</td>
+                        <td>
+                            <a href="@Url.Action("Detalhe", "Home", new { id = post.ID })" class="btn btn-primary">Descrição</a>
+                        </td>
+                        <td>@post.CreadoEm.ToString("g")</td> <!-- Formato de data e hora -->
+                        <td>
+                        <form asp-action="Delete" asp-route-id="@post.ID" method="post" onsubmit="return confirm('Tem certeza que deseja excluir este item?');">
+                            <button type="submit" class="btn btn-danger">Deletar</button>
+                        </form>
+                        </td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="5" class="text-center">Nenhum registro encontrado.</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
